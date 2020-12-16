@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src='https://lib.baomitu.com/vue/2.6.12/vue.common.dev.js'></script> -->
+  <script src='./vue.js'></script>
+  <script src='./observer.js'></script>
+  <script src='./compiler.js'></script>
+</head>
+<body>
+  <div id='app'>
+    <p>{{ msg }}</p>
+    <span>{{ age}}</span>
+    <input v-model.number="age" type="number" step="1" />
+    <button>text</button>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data:{
+        msg: 'abc',
+        age:10
+      }
+    })
+    // console.log(vm);
+  </script>
+  
+</body>
+</html>
