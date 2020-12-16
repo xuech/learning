@@ -16,6 +16,8 @@ Observer.prototype.defineReactive = function (data, key, value) {
     set:function (newVal) {
       if (value === newVal) return
       value = newVal
+      //更新视图
+      bus.$emit(key)
     }
   })
 }

@@ -8,12 +8,14 @@
   <script src='./vue.js'></script>
   <script src='./observer.js'></script>
   <script src='./compiler.js'></script>
+  <script src='../eventEmitter/index.js'></script>
 </head>
 <body>
   <div id='app'>
     <p>{{ msg }}</p>
+    <p v-text='msg'></p>
     <span>{{ age}}</span>
-    <input v-model.number="age" type="number" step="1" />
+    <input v-model="age" type="text" step="1" />
     <button>text</button>
   </div>
   <script>

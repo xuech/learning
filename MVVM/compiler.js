@@ -28,11 +28,26 @@ Compiler.prototype.compile = function (el) {
 */
 Compiler.prototype.compileElementNode = function (node) {
   // console.log(node.attributes);
+  // name: "v-model.number" value: "age"
   Array.from(node.attributes).forEach(attr => {
-    // console.dir(attr)
+    console.dir(attr)
+    const value = attr.value
+    const attriName = attr.name
     // 过滤出v-开头的指令
-    if (this.isDirective(attr.name)) {
-      
+    if (this.isDirective(attriName)) {
+      if (attriName === 'v-text') {
+        node.textContent = this.$vm.$data[value]
+        bus.$on(value, () => {
+          node.textContent = this.$vm.$data[value]
+        })
+      }
+      if (attriName === 'v-model') {
+        node.value = this.$vm.$data[value]
+        bus.$on(value, () => {
+          node.value = this.$vm.$data[value]
+        })
+      }
+
     }
   })
 }
@@ -49,6 +64,10 @@ Compiler.prototype.compileTextNode = function (node) {
     const key = RegExp.$1.trim()
     // console.log(key);
     node.textContent = this.$vm.$data[key]
+    
+    bus.$on(key, () => {
+      node.textContent = this.$vm.$data[key]
+    })
   }
   
 }
