@@ -46,6 +46,12 @@ Compiler.prototype.compileElementNode = function (node) {
         bus.$on(value, () => {
           node.value = this.$vm.$data[value]
         })
+
+        //绑定事件
+        node.oninput = ()=> {
+          //更新所有绑定的数据
+          this.$vm.$data[value] = node.value
+        }
       }
 
     }
