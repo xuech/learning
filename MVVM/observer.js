@@ -1,9 +1,9 @@
 function Observer(data) {
-  this.$data = data
-  Object.keys(data).forEach(key => {
-    this.defineReactive(this.$data, key, this.$data[key])
-  })
-  
+  if (data && typeof data === 'object') { 
+    Object.keys(data).forEach(key => {
+      this.defineReactive(data, key, data[key])
+    })
+  }
 }
 
 Observer.prototype.defineReactive = function (data, key, value) {

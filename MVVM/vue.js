@@ -20,9 +20,6 @@ function Vue(options) {
 }
 
 Vue.prototype.proxyData = function () {
-  // for (const key in object) {
-  //   Object.defineProperty(this,key,{})
-  // }
   Object.keys(this.$data).forEach(key => {
     Object.defineProperty(this, key, {
       enumerable: true,
