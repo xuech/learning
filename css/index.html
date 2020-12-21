@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  /* .container{
+    width: 960px;
+    margin: 0 auto;
+    background-color: yellow;
+  }
+  .left{
+    border-right: 220px solid #dfdfdf;
+    position: absolute;
+    width: 740px;
+    height: 300px;  
+    background: green;
+  }
+  .right {
+    background: #dfdfdf;
+    margin-left: 740px;
+    position: absolute;
+    height: 300px;
+    width: 220px;
+  } */
+  .container{
+    display: flex;
+  }
+  /* .container div{
+    flex: 1;    
+  } */
+</style>
+</head>
+<body>
+  <!-- <div class="container">
+    <div class="left">这是一种非常简单，易于实现的方法。不过兼容性不好，在ie6-7无法正常运行。</div>
+    <div class="right">这种方法是使用边框和绝对定位来实现一个假的高度相等列的效果。结构简单，兼容各浏览器，容易掌握。假设你需要实现一个两列等高布局，侧栏高度要和主内容高度相等。</div>
+  </div> -->
+
+  <div class="container">
+    <div style="background-color: yellow;width: 400px;">这是一种非常简单，易于实现的方法。不过兼容性不好，在ie6-7无法正常运行。</div>
+    <div style="background-color: red;flex: 1;">这种方法是我们实现等高列最早使用的一种方法，就是使用背景图片，在列的父元素上使用这个背景图进行Y轴的铺放，从而实现一种等高列的假象。实现方法简单，兼容性强，不需要太多的css样式就可以轻松实现,但此方法不适合流体布局等高列的布局。在制作样式之前需要一张类似下面的背景图：</div>
+    <div style="background-color: orange;;width: 400px">这种方法是使用边框和绝对定位来实现一个假的高度相等列的效果。结构简单，兼容各浏览器，容易掌握。假设你需要实现一个两列等高布局，侧栏高度要和主内容高度相等。</div>
+  </div>
+</body>
+
+
+
+
+  <script>
+    var input = document.getElementById('d0')
+ 
+    function debounce(func, wait, immediate) {
+      var timer = null;
+      return function () {
+        var context = this;
+        var args = arguments;
+        // clearTimeout(timer);
+         if (timer) clearTimeout(timer);
+
+        if (immediate) {
+          // 如果已经执行过，不再执行
+            var callNow = !timer;
+            timer = setTimeout(function(){
+                timer = null;
+            }, wait)
+            if (callNow) func.apply(context, args)
+        } else {
+          timer = setTimeout(function(){
+            func.apply(context, args)
+          }, wait)
+        }
+      
+      }
+    }
+
+    function getUserAction(e){
+      console.log('event函数:' , e)
+      console.log('this:' , this)
+      console.log(input.value);
+    }
+
+    function throttle(func, wait) {
+      let preTime = 0
+      let context, args;
+      return function() {
+        var now = new Date()
+        context = this;
+        args = arguments
+        if (now - preTime > wait) {
+          func.apply(context, args)
+          preTime = now
+        }
+      }
+    }
+    // input.oninput = throttle(getUserAction, 1000)
+
+
+   let arr = [1, 3,function(){}];
+let arr4 = JSON.parse(JSON.stringify(arr));
+console.log(arr, arr4)
+  </script>
+
+  <script>
+    // function SuperType(name, info) {
+    //   // 实例属性（基本类型）
+    //   this.name = name || 'Super'
+    //   // 实例属性（引用类型）
+    //   this.info = info || ['Super']
+    //   // 实例方法
+    //   this.getName = function() { return this.name }
+    // }
+    // // 原型方法
+    // SuperType.prototype.getInfo = function() { return this.info }
+
+    // // 原型继承
+    // function ChildType(message) { this.message = message }
+    // ChildType.prototype = new SuperType('Child', ['Child'])
+
+    // // 在调用子类构造函数时，无法向父类构造函数传递参数
+    // var child = new ChildType('Hello')
+
+    // // 子类实例可以访问父类的实例方法和原型方法
+    // console.log(child.getName()) // Child
+    // console.log(child.getInfo()) // ["Child"]
+
+    // // 所有子类实例共享父类的引用属性
+    // var other = new ChildType('Hi')
+    // other.info.push('Temp')
+    // console.log(other.info) // ["Child", "Temp"]
+    // console.log(child.info) // ["Child", "Temp"]
+
+    // function Father(name, hobbies) {
+    //   this.name = name
+    //   this.hobbies = hobbies
+    // }
+    // Father.prototype.printHobby = function () {
+    //   console.log(this.hobbies);
+    // }
+
+    // function Son(age) {
+    //   this.age = age
+    // }
+    // Son.prototype = new Father("薛", ['睡觉'])
+
+    // let son = new Son(12)
+    // son.hobbies.push('吃饭')
+    // son.printHobby()
+
+    // let son2 = new Son(9)
+    // son2.hobbies.push('玩')
+    // son2.printHobby()
+
+    // function A() {
+    //   this.x = 100
+    // }
+    // A.prototype.getX = function () {
+    //   console.log(this.x);
+    // }
+    // function B() {
+    //   A.call(this)
+    // }
+    // B.prototype = Object.create(A.prototype)
+    // B.prototype.constructor = B
+    // let b = new B()
+    // console.log(b.x);
+    // console.log(b.getX); 
+
+    // function Person() {
+    //   this.name = 'xch'
+    // }
+    // Person.prototype.sex = 'man'
+    // Person.prototype.age = 18
+    // var person1 = new Person()
+    // console.log('sex' in person1) //true
+    // console.log('age' in person1) //true
+    // console.log('name' in person1) //true
+    // console.log(person1.hasOwnProperty("age")) //false
+    // console.log(person1.hasOwnProperty("name")) //false
+
+function Fn(){
+  if (!(this instanceof Fn)) {
+    console.warn("请使用new 调用");
+  }
+  //浏览器默认创建的对象就是我们的实例p1->this
+  this.x = 100
+  this.getX = function(){
+    console.log(this.x)
+  }
+}
+// Fn()
+
+const obj = {
+  name: "jack",
+  age: 20,
+  func: function(age) {
+    console.log(`我的名字是${this.name}, 年龄:${age}`)
+  }
+}
+
+const obj2 = {
+  name: "张三",
+  age: 30
+}
+
+// obj.func.call(obj2, '40')
+const func2 = obj.func.bind(obj2);   
+// func2(40); 
+  </script>
+  
+</body>
+</html>
