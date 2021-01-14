@@ -208,6 +208,23 @@ const obj2 = {
 const func2 = obj.func.bind(obj2);   
 // func2(40); 
   </script>
+
+  <script>
+    function parseUtf8StringToHex(t) {
+      t = unescape(encodeURIComponent(t));
+      for (var e = t.length, n = [], i = 0; i < e; i++)
+          n[i >>> 2] |= (255 & t.charCodeAt(i)) << 24 - i % 4 * 8;
+      for (var s = [], r = 0; r < e; r++) {
+          var a = n[r >>> 2] >>> 24 - r % 4 * 8 & 255;
+          s.push((a >>> 4).toString(16)),
+          s.push((15 & a).toString(16))
+      }
+      //39313632303130334d41373257414c333131
+      return s.join("")
+    }
+
+    console.log(parseUtf8StringToHex("91620103MA72WAL311")); 
+  </script>
   
 </body>
 </html>
