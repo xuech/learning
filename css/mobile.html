@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <title>Document</title>
+  <style>
+    /* pc width > 1100px */
+html, body { margin: 0;padding: 0;width: 100%;height: 100%;}
+aside {
+    width: 10%;
+    height: 100%;
+    background-color: red;
+    float: left;
+}
+main {
+    height: 100%;
+    background-color: blue;
+    overflow: hidden;
+}
+/* ipad pro */
+@media screen and (max-width: 1024px) {
+    aside {
+      width: 8%;
+      background-color: yellow;
+    }
+}
+/* ipad */
+@media screen and (max-width: 768px) {
+    aside {
+      float: none;
+      width: 100%;
+      height: 10%;
+      background-color: green;
+    }
+    main {
+      height: calc(100vh - 10%);
+      background-color: red;
+    }
+}
+/* iphone6 7 8 plus */
+@media screen and (max-width: 414px) {
+    aside {
+      float: none;
+      width: 100%;
+      height: 5%;
+      background-color: yellow;
+    }
+    main {
+      height: calc(100vh - 5%);
+      background-color: red;
+    }
+}
+/* iphoneX */
+@media screen and (max-width: 375px) and (-webkit-device-pixel-ratio: 3) {
+    aside {
+      float: none;
+      width: 100%;
+      height: 10%;
+      background-color: blue;
+    }
+    main {
+      height: calc(100vh - 10%);
+      background-color: red;
+    }
+}
+/* iphone6 7 8 */
+@media screen and (max-width: 375px) and (-webkit-device-pixel-ratio: 2) {
+    aside {
+      float: none;
+      width: 100%;
+      height: 3%;
+      background-color: black;
+    }
+    main {
+      height: calc(100vh - 3%);
+      background-color: red;
+    }
+}
+/* iphone5 */
+@media screen and (max-width: 320px) {
+    aside {
+      float: none;
+      width: 100%;
+      height: 7%;
+      background-color: green;
+    }
+    main {
+      height: calc(100vh - 7%);
+      background-color: red;
+    }
+}
+
+  </style>
+  <!-- <style>
+    /* iphone6 7 8 */
+    body {
+        background-color: yellow;
+        font-size:22px;
+    }
+    /* iphone 5 */
+    @media screen and (max-width: 320px) {
+        body {
+          background-color: red;
+          font-size: 15px;
+        }
+    }
+    /* iphoneX */
+    @media screen and (min-width: 375px) and (-webkit-device-pixel-ratio: 3) {
+        body {
+          background-color: #0FF000;
+          font-size: 20px;
+        }
+    }
+    /* iphone6 7 8 plus */
+    @media screen and (min-width: 414px) {
+        body {
+          background-color: blue;
+          font-size: 30px;
+        }
+    }
+    /* ipad */
+    @media screen and (min-width: 768px) {
+        body {
+          background-color: green;
+          font-size: 40px;
+        }
+        html{
+          font-size: 40px;
+        }
+    }
+    /* ipad pro */
+    @media screen and (min-width: 1024px) {
+        body {
+          background-color: #FF00FF;
+          font-size: 50px;
+        }
+        html{
+          font-size: 50px;
+        }
+    }
+    /* pc */
+    @media screen and (min-width: 1100px) {
+        body {
+          background-color: black;
+          font-size: 60px;
+        }
+        html{
+          font-size: 60px;
+        }
+    }
+    p {
+      font-size: 5rem;
+    }
+
+ </style> -->
+</head>
+<body>
+<aside></aside>
+<main></main>
+  
+</body>
+</html>
